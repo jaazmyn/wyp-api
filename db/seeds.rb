@@ -22,17 +22,17 @@ puts "Destroying fertilizing events events.."
 FertilizingEvent.destroy_all
 
 puts "Destroying water notifications..."
-WaterNotification.destroy_all
+WateringNotification.destroy_all
 
 puts "Destroying fertilize notifications..."
-FertilizerNotification.destroy_all
+FertilizingNotification.destroy_all
 
 user = User.create!(name: "jasmin", email: "jasmin@test.com", password: "123456")
 
 response = HTTParty.get(
   'https://trefle.io/api/v1/plants', format: :plain,
   query: {
-    "token": ENV['TREFLE_KEY']
+    "token": ""
   }
 )
 
@@ -41,9 +41,7 @@ plants = JSON.parse(response, symbolize_names: true)
 plants[:data].each do |plant_info|
 
     plant = Plant.create!(
-      common_name: plant_info[:common_name],
-      scientific_name: plant_info[:scientific_name],
-      nickname: Faker::Name.unique.name,
+      name: plant_info[:common_name],
       watering_interval: 7,
       fertilizing_interval: 7,
       user: user
@@ -66,5 +64,5 @@ plants[:data].each do |plant_info|
     fertilizing_event.save!
   end
 
-  puts "Saving #{plant.common_name}..."
+  puts "Saving #{plant.name}..."
 end
