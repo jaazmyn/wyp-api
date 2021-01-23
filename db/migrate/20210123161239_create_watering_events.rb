@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWateringEvents < ActiveRecord::Migration[6.1]
   def change
     create_table :watering_events do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateWateringNotifications < ActiveRecord::Migration[6.1]
   def change
     create_table :watering_notifications do |t|

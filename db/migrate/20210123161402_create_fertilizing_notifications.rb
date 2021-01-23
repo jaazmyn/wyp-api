@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFertilizingNotifications < ActiveRecord::Migration[6.1]
   def change
     create_table :fertilizing_notifications do |t|
