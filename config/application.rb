@@ -21,8 +21,13 @@ Bundler.require(*Rails.groups)
 
 module WypApi
   class Application < Rails::Application
+    config.generators do |generate|
+      generate.test_framework :rspec, fixture: false
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+
 
     # Configuration for the application, engines, and railties goes here.
     #
