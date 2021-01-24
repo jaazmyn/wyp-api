@@ -21,3 +21,4 @@ class User < ApplicationRecord
     save
   end
 end
+
